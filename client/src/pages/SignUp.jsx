@@ -54,7 +54,7 @@ export default function SignUp(){
                 </button>
             </form>
             <div className='flex gap-2 mt-5'>
-                <p>Have an account</p>
+                <p>Have an account?</p>
                 <Link to={'/sign-in'}>
                     <span className='text-blue-700'>Sign In</span>
                 </Link>
@@ -63,3 +63,5 @@ export default function SignUp(){
         </div>
     )
 }
+
+//mongodb+srv://lostboy:lostboyalex@cluster0.djdziaf.mongodb.net/maize-millers?retryWrites=true&w=majority
