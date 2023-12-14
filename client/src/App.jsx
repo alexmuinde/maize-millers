@@ -8,9 +8,11 @@ import Profile from './pages/Profile'
 import Header from './components/Header'
 import PrivateRoute from './components/PrivateRoute'
 import CreateListing from './pages/CreateListing'
+import Receipt from './pages/Receipt'
+import Report from './pages/Report'
 
 
-export default function SignOut() {
+export default function App() {
   
 
     return (
@@ -24,6 +26,8 @@ export default function SignOut() {
                 <Route element={<PrivateRoute />}>
                     <Route path='/profile' element={<Profile />} />
                     <Route path='/create-listing' element={<CreateListing />} />
+                    <Route path='/receipt' element={<Receipt />} />
+                    <Route path='/report' element={<Report />} />
                 </Route>
             </Routes>
         </BrowserRouter>

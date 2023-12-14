@@ -82,7 +82,7 @@ export default function Profile(){
             <h1 className="text-3xl font-semibold text-center my-7">Profile</h1>
             <form onSubmit={handleSubmit} className="flex flex-col gap-4">
                 <input onChange={(e) => setFile(e.target.files[0])} type="file" ref={fileRef} hidden accept="image/*"/>
-                <img onClick={() => fileRef.current.click()} src={formData.avatar || currentUser.avatar} alt="profile" className="rounded-full h-24 w-24 object-cover cursor-pointer self-center mt-2"/>
+                <img onClick={() => fileRef.current.click()} src={formData.avatar || currentUser.avatar} alt="profile" className="rounded-full h-24 w-24 object-cover cursor-pointer self-center mt-2 bg-gray-700"/>
                 <p className="text-sm self-center">
                     {fileUploadError ? (
                         <span className="text-red-700">Error Image Upload</span>
@@ -98,7 +98,15 @@ export default function Profile(){
                 <input type='email' placeholder="email" className="border p-3 rounded-lg" id="email" defaultValue={currentUser.email} onChange={handleChange}/>
                 <input type='password' placeholder="password" className="border p-3 rounded-lg" id="password" onChange={handleChange}/>
                 <button disabled={loading} className="bg-slate-700 text-white rounded-lg p-3 uppercase hover:opacity-90 disabled:opacity-90">{loading ? 'Loading...' : 'Update'}</button>
-                <Link className="bg-green-700 text-white p-3 rounded-lg uppercase text-center hover:opacity-90" to={'/create-listing'}>Create Listing</Link>
+                <div className="flex flex-row gap-10 items-center">
+                <div className="bg-green-700 rounded-lg uppercase text-center hover:opacity-90 p-3 w-1/2">
+                <Link className=" text-white" to={'/report'}>Create a Report</Link>
+                </div>
+                <div className="bg-green-700 rounded-lg uppercase text-center hover:opacity-90 p-3 w-1/2">
+                <Link className="bg-green-700 text-white p-3 rounded-lg uppercase text-center hover:opacity-90" to={'/receipt'}>Generate a Receipt</Link>
+                </div>
+                
+                </div>
             </form>
             <p className="text-red-700 mt-5">{error ? error : ''}</p>
             <p className="text-green-700 mt-5">{updateSuccess ? 'User Updated Successfully!': ''}</p>
@@ -114,3 +122,5 @@ export default function Profile(){
       request.resource.size <2 * 1024 * 1024 &&
       request.resource.contentType.matches('image/.*')
  */
+
+      //<Link className="bg-green-700 text-white p-3 rounded-lg uppercase text-center hover:opacity-90" to={'/create-listing'}>Create Listing</Link>
