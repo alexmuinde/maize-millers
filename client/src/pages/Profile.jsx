@@ -128,7 +128,7 @@ export default function Profile(){
             </form>
             <p className="text-red-700 mt-5">{error ? error : ''}</p>
             <p className="text-green-700 mt-5">{updateSuccess ? 'User Updated Successfully!': ''}</p>
-            <button onClick={handleShowRecords} className="text-green-700 w-full">Show Reports</button>
+            <button onClick={handleShowRecords} className="text-green-700 w-full hover:underline">Show Reports</button>
             <p className="text-red-700 mt-5">{showRecordsError ? 'Error showing records' : ''}</p>
             {userListings && userListings.length > 0 && userListings.map((report) => (
                 <div key={report._id} className="border rounded-lg p-3 flex justify-between items-center">
