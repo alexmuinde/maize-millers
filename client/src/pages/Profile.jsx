@@ -6,6 +6,7 @@ import { app } from "../firebase"
 import { updateUserFailure, updateUserStart, updateUserSuccess } from "../redux/user/userSlice.js"
 import { useDispatch } from "react-redux"
 import {Link} from 'react-router-dom'
+import Report from "../../../api/models/report.model.js"
 
 
 export default function Profile(){
@@ -16,6 +17,8 @@ export default function Profile(){
     const [fileUploadError, setFileUploadError] = useState(false)
     const [formData, setFormData] = useState({})
     const [updateSuccess, setUpdateSuccess] = useState(false)
+    const [showRecordsError, setShowRecordsError] = useState(false)
+    const [userListings, setUserListings] = useState([])
     const dispatch = useDispatch()
 
 
@@ -77,6 +80,21 @@ export default function Profile(){
             dispatch(updateUserFailure(error.message))
         }
     }
+
+    const handleShowRecords = async () => {
+        try {
+            setShowRecordsError(false)
+            const res = await fetch(`/api/user/listings/${currentUser._id}`)
+            const data = await res.json()
+            if(data.success === false){
+                setShowRecordsError(true)
+                return
+            }
+            setUserListings(data)
+        } catch (error) {
+            setShowRecordsError(true)
+        }
+    }
     return(
         <div className="p-3 max-w-lg mx-auto">
             <h1 className="text-3xl font-semibold text-center my-7">Profile</h1>
@@ -110,7 +128,19 @@ export default function Profile(){
             </form>
             <p className="text-red-700 mt-5">{error ? error : ''}</p>
             <p className="text-green-700 mt-5">{updateSuccess ? 'User Updated Successfully!': ''}</p>
-
+            <button onClick={handleShowRecords} className="text-green-700 w-full">Show Reports</button>
+            <p className="text-red-700 mt-5">{showRecordsError ? 'Error showing records' : ''}</p>
+            {userListings && userListings.length > 0 && userListings.map((report) => (
+                <div key={report._id} className="border rounded-lg p-3 flex justify-between items-center">
+                    <Link className="text-slate-700 font-semibold flex-1 hover:underline truncate" to={`/report/${report._id}`}>
+                        <p >{report.name}</p>
+                    </Link>
+                    <Link className="text-slate-700 font-semibold flex-1 hover:underline" to={`/report/${report._id}`}>
+                        <p >{report.phoneNumber}</p>
+                    </Link>
+                    <button className="text-green-700 hover:underline uppercase">Edit</button>
+                </div>
+            ))}
         </div>
     )
 }
