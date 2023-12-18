@@ -60,7 +60,7 @@ export default function CreateListing(){
             if(data.success === false){
                 setError(data.message)
             }
-            navigate(`/profile`)
+            navigate(`/create-listing`)
         } catch (error) {
             setError(error.message)
             setLoading(false)

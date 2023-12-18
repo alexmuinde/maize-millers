@@ -50,7 +50,7 @@ export default function CreateReceipt(){
             if(data.success === false){
                 setError(data.message)
             }
-            navigate(`/profile`)
+            navigate(`/create-listing`)
         } catch (error) {
             setError(error.message)
             setLoading(false)
@@ -61,19 +61,22 @@ export default function CreateReceipt(){
             <h1 className="text-3xl font-semibold text-center my-7">Generate a Receipt</h1>
             <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4">
     
-
-                <div className="flex flex-col gap-4 flex-1">
-                    <input type="text" placeholder="Description" className="border p-3 rounded-lg" id="description" required onChange={handleChange} value={formData.description}/>
-                    <input type="text" placeholder="Payment Method" className="border p-3 rounded-lg" id="paymentMethod" required onChange={handleChange} value={formData.paymentMethod}/>
-                    <input type="text" placeholder="Bank Reference Number" className="border p-3 rounded-lg" id="bankReferenceNumber" required onChange={handleChange} value={formData.bankReferenceNumber}/>
-                    <input type="text" placeholder="Amount" className="border p-3 rounded-lg" id="amount" required onChange={handleChange} value={formData.amount}/>
-                    <input type="text" placeholder="VAT" className="border p-3 rounded-lg" id="vat" required onChange={handleChange} value={formData.vat}/>
-                    <input type="text" placeholder="VAT Amout" className="border p-3 rounded-lg" id="vatAmount" required onChange={handleChange} value={formData.vatAmount}/>
-                    <input type="text" placeholder="Total Amount" className="border p-3 rounded-lg" id="totalAmount" required onChange={handleChange} value={formData.totalAmount}/>
+                <div className="flex flex-1 flex-col gap-4">
                     <div className="flex flex-row gap-3 border p-3 rounded-lg">
                         <p>Current Date:</p>
                         <input type="date" onChange={handleDate} id="currentDate" required value={formData.currentDate}/>
                     </div>
+                    <input type="text" placeholder="Description" className="border p-3 rounded-lg" id="description" required onChange={handleChange} value={formData.description}/>
+                    <input type="text" placeholder="Payment Method" className="border p-3 rounded-lg" id="paymentMethod" required onChange={handleChange} value={formData.paymentMethod}/>
+                    <input type="text" placeholder="Bank Reference Number" className="border p-3 rounded-lg" id="bankReferenceNumber" required onChange={handleChange} value={formData.bankReferenceNumber}/>
+                    
+                </div>
+                <div className="flex flex-1 flex-col gap-4">
+                    <input type="text" placeholder="VAT Amout" className="border p-3 rounded-lg" id="vatAmount" required onChange={handleChange} value={formData.vatAmount}/>
+                    <input type="text" placeholder="Total Amount" className="border p-3 rounded-lg" id="totalAmount" required onChange={handleChange} value={formData.totalAmount}/>
+                    <input type="text" placeholder="Amount" className="border p-3 rounded-lg" id="amount" required onChange={handleChange} value={formData.amount}/>
+                    <input type="text" placeholder="VAT" className="border p-3 rounded-lg" id="vat" required onChange={handleChange} value={formData.vat}/>
+                    
                     
                     <div className="flex flex-col sm:flex-row gap-4">
                     <div className="bg-green-700 rounded-lg uppercase text-center   w-3/5 h-10">

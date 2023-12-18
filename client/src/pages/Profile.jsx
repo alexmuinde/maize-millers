@@ -99,11 +99,11 @@ export default function Profile(){
                 <input type='password' placeholder="password" className="border p-3 rounded-lg" id="password" onChange={handleChange}/>
                 <button disabled={loading} className="bg-slate-700 text-white rounded-lg p-3 uppercase hover:opacity-90 disabled:opacity-90">{loading ? 'Loading...' : 'Update'}</button>
                 <div className="flex flex-row gap-10 items-center">
-                <div className="bg-green-700 rounded-lg uppercase text-center hover:opacity-90 p-3 w-1/2">
-                <Link className=" text-white" to={'/report'}>Create a Report</Link>
+                <div className="bg-green-700 rounded-lg uppercase text-center  p-3 w-1/2">
+                <Link className=" text-white hover:opacity-60" to={'/report'}>Report</Link>
                 </div>
-                <div className="bg-green-700 rounded-lg uppercase text-center hover:opacity-90 p-3 w-1/2">
-                <Link className="bg-green-700 text-white p-3 rounded-lg uppercase text-center hover:opacity-90" to={'/receipt'}>Generate a Receipt</Link>
+                <div className="bg-green-700 rounded-lg uppercase text-center  p-3 w-1/2">
+                <Link className="text-white hover:opacity-60" to={'/receipt'}>Receipt</Link>
                 </div>
                 
                 </div>
