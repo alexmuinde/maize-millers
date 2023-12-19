@@ -9,6 +9,8 @@ import {Link} from 'react-router-dom'
 import Report from "../../../api/models/report.model.js"
 
 
+
+
 export default function Profile(){
     const fileRef = useRef(null)
     const {currentUser, loading, error} = useSelector((state) => state.user)
@@ -17,8 +19,8 @@ export default function Profile(){
     const [fileUploadError, setFileUploadError] = useState(false)
     const [formData, setFormData] = useState({})
     const [updateSuccess, setUpdateSuccess] = useState(false)
-    const [showRecordsError, setShowRecordsError] = useState(false)
-    const [userListings, setUserListings] = useState([])
+    const [showReportsError, setShowReportsError] = useState(false)
+    const [userReports, setUserReports] = useState([])
     const dispatch = useDispatch()
 
 
@@ -81,18 +83,19 @@ export default function Profile(){
         }
     }
 
+    
     const handleShowRecords = async () => {
         try {
-            setShowRecordsError(false)
-            const res = await fetch(`/api/user/listings/${currentUser._id}`)
-            const data = await res.json()
-            if(data.success === false){
-                setShowRecordsError(true)
-                return
-            }
-            setUserListings(data)
+           setShowReportsError(false) 
+           const res = await fetch(`/api/user/listings/${currentUser._id}`) 
+           const data = await res.json()
+           if(Date.success === false){
+            setShowReportsError(true)
+            return
+           }
+           setUserReports(data)
         } catch (error) {
-            setShowRecordsError(true)
+            setShowReportsError(true)
         }
     }
     return(
@@ -129,17 +132,25 @@ export default function Profile(){
             <p className="text-red-700 mt-5">{error ? error : ''}</p>
             <p className="text-green-700 mt-5">{updateSuccess ? 'User Updated Successfully!': ''}</p>
             <button onClick={handleShowRecords} className="text-green-700 w-full hover:underline">Show Reports</button>
-            <p className="text-red-700 mt-5">{showRecordsError ? 'Error showing records' : ''}</p>
-            {userListings && userListings.length > 0 && userListings.map((report) => (
-                <div key={report._id} className="border rounded-lg p-3 flex justify-between items-center">
+            <p className="text-red-700 mt-5">{showReportsError ? 'Error Showing Reports' : ''}</p>
+            {userReports && userReports.length > 0 && userReports.map((report) => (
+                
+                    
+                <div key={report._id} className="border rounded-lg p-3 flex gap-3 justify-between items-center">
                     <Link className="text-slate-700 font-semibold flex-1 hover:underline truncate" to={`/report/${report._id}`}>
                         <p >{report.name}</p>
                     </Link>
                     <Link className="text-slate-700 font-semibold flex-1 hover:underline" to={`/report/${report._id}`}>
                         <p >{report.phoneNumber}</p>
                     </Link>
-                    <button className="text-green-700 hover:underline uppercase">Edit</button>
+                    <div className="flex flex-row gap-3 ">
+                    <Link to={`/update-listing/${report._id}`}>
+                        <button className="text-green-700 hover:underline uppercase">Edit</button>
+                    </Link>
+                    <button className="text-green-700 hover:underline uppercase">Print</button>
+                    </div>
                 </div>
+                
             ))}
         </div>
     )

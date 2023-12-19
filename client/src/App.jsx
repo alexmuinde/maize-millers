@@ -10,6 +10,7 @@ import PrivateRoute from './components/PrivateRoute'
 import CreateListing from './pages/CreateListing'
 import Receipt from './pages/Receipt'
 import Report from './pages/Report'
+import UpdateListing from './pages/UpdateListing'
 
 
 export default function App() {
@@ -28,6 +29,7 @@ export default function App() {
                     <Route path='/create-listing' element={<CreateListing />} />
                     <Route path='/receipt' element={<Receipt />} />
                     <Route path='/report' element={<Report />} />
+                    <Route path='/update-listing/:reportId' element={<UpdateListing />} />
                 </Route>
             </Routes>
         </BrowserRouter>

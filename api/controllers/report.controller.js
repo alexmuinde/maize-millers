@@ -29,3 +29,15 @@ export const updateReport = async (req, res, next) => {
         next(error)
     }
 }
+
+export const getReport = async (req, res, next) => {
+    try {
+         const report = await Report.findById(req.params.id)
+         if(!report){
+            return next(errorHandler(404, 'Report not found'))
+         }
+         res.status(200).json(report)
+    } catch (error) {
+        next(error)
+    }
+}
