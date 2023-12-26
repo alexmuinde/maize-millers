@@ -41,3 +41,22 @@ export const getReport = async (req, res, next) => {
         next(error)
     }
 }
+
+export const getReports = async (req, res, next) => {
+    try {
+        const limit = parseInt(req.query.limit) || 9
+        const startIndex = parseInt(req.query.startIndex) || 0
+        const searchTerm = req.query.searchTerm || ''
+        const sort = req.query.sort || 'createdAt'
+        const order = req.query.order || 'desc'
+
+        const reports = await Report.find({
+            name: {$regex: searchTerm, $options: 'i'},
+            phoneNumber: {$regex: searchTerm, $options: 'i'}
+        }).sort({[sort]: order}).limit(limit).skip(startIndex)
+
+        return res.status(200).json(reports)
+    } catch (error) {
+        next(error)
+    }
+}

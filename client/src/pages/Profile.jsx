@@ -85,6 +85,7 @@ export default function Profile(){
 
     
     const handleShowRecords = async () => {
+        
         try {
            setShowReportsError(false) 
            const res = await fetch(`/api/user/listings/${currentUser._id}`) 
@@ -133,35 +134,27 @@ export default function Profile(){
             <p className="text-green-700 mt-5">{updateSuccess ? 'User Updated Successfully!': ''}</p>
             <button onClick={handleShowRecords} className="text-green-700 w-full hover:underline">Show Reports</button>
             <p className="text-red-700 mt-5">{showReportsError ? 'Error Showing Reports' : ''}</p>
-            {userReports && userReports.length > 0 && userReports.map((report) => (
+            {userReports && userReports.length > 0 && 
+                <div className="flex flex-col gap-4">
+                    <h1 className="text-center mt-3 text-2xl font-semibold">Your Reports</h1>
+                        {userReports.map((report) => (
+                            <div key={report._id} className="border rounded-lg p-3 flex gap-3 justify-between items-center">
+                                <Link className="text-slate-700 font-semibold flex-1 hover:underline truncate" to={`/update-listing/${report._id}`}>
+                                    <p >{report.name}</p>
+                                </Link>
+                                <Link className="text-slate-700 font-semibold flex-1 hover:underline" to={`/update-listing/${report._id}`}>
+                                    <p >{report.phoneNumber}</p>
+                                </Link>
+                                <div className="flex flex-row gap-3 ">
+                                
+                                <button className="text-green-700 hover:underline uppercase">Print</button>
+                                </div>
+                            </div>))}
                 
-                    
-                <div key={report._id} className="border rounded-lg p-3 flex gap-3 justify-between items-center">
-                    <Link className="text-slate-700 font-semibold flex-1 hover:underline truncate" to={`/report/${report._id}`}>
-                        <p >{report.name}</p>
-                    </Link>
-                    <Link className="text-slate-700 font-semibold flex-1 hover:underline" to={`/report/${report._id}`}>
-                        <p >{report.phoneNumber}</p>
-                    </Link>
-                    <div className="flex flex-row gap-3 ">
-                    <Link to={`/update-listing/${report._id}`}>
-                        <button className="text-green-700 hover:underline uppercase">Edit</button>
-                    </Link>
-                    <button className="text-green-700 hover:underline uppercase">Print</button>
-                    </div>
-                </div>
-                
-            ))}
-        </div>
-    )
+                </div>}
+
+        </div>)        
 }
+    
 
-/**
- * firebase storage
- * allow read;
-      allow write : if
-      request.resource.size <2 * 1024 * 1024 &&
-      request.resource.contentType.matches('image/.*')
- */
 
-      //<Link className="bg-green-700 text-white p-3 rounded-lg uppercase text-center hover:opacity-90" to={'/create-listing'}>Create Listing</Link>
