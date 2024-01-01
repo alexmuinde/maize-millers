@@ -32,7 +32,9 @@ export const updateReport = async (req, res, next) => {
 
 export const getReport = async (req, res, next) => {
     try {
-         const report = await Report.findById(req.params.id)
+        const sort = req.query.sort || 'createdAt'
+        const order = req.query.order || 'desc'
+         const report = await Report.findById(req.params.id).sort({[sort]: order})
          if(!report){
             return next(errorHandler(404, 'Report not found'))
          }
@@ -44,15 +46,14 @@ export const getReport = async (req, res, next) => {
 
 export const getReports = async (req, res, next) => {
     try {
-        const limit = parseInt(req.query.limit) || 9
+        const limit = parseInt(req.query.limit) || 100
         const startIndex = parseInt(req.query.startIndex) || 0
         const searchTerm = req.query.searchTerm || ''
         const sort = req.query.sort || 'createdAt'
         const order = req.query.order || 'desc'
 
         const reports = await Report.find({
-            name: {$regex: searchTerm, $options: 'i'},
-            phoneNumber: {$regex: searchTerm, $options: 'i'}
+            name: {$regex: searchTerm, $options: ''}
         }).sort({[sort]: order}).limit(limit).skip(startIndex)
 
         return res.status(200).json(reports)

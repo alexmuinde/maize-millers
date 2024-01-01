@@ -1,9 +1,8 @@
 
 import { useEffect, useState } from "react"
+import ReportItems from "../components/ReportItems"
 
-import HomesItems from "../components/HomesItems"
-
-export default function (Home){
+export default function Search(){
     const [loading, setLoading] = useState(false)
     const [reports, setReports] = useState([])
 
@@ -25,7 +24,7 @@ export default function (Home){
     return(
         <main className="p-4 max-w-4xl mx-auto items-center">
             <div className="flex flex-col gap-4">
-                <h1 className="text-3xl font-semibold border-b p-3 text-slate-700">All Reports: </h1>
+                <h1 className="text-3xl font-semibold border-b p-3 text-slate-700">Report Results: </h1>
                 <div className="flex flex-col gap-4">
                     {!loading && reports.length === 0 && (
                         <p className="text-xl text-red-700">No Report Found!</p>
@@ -34,7 +33,7 @@ export default function (Home){
                         <p className="text-xl text-slate-700 text-center w-full">Loading...</p>
                     )}
                     {!loading && reports && reports.map((reports) => (
-                        <HomesItems key={reports._id} reports={reports}/>
+                         <ReportItems key={reports._id} reports={reports}/>
                     ))}
                 </div>
             </div>

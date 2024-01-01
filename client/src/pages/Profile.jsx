@@ -22,6 +22,7 @@ export default function Profile(){
     const [showReportsError, setShowReportsError] = useState(false)
     const [userReports, setUserReports] = useState([])
     const dispatch = useDispatch()
+    
 
 
     useEffect(() => {
@@ -86,9 +87,11 @@ export default function Profile(){
     
     const handleShowRecords = async () => {
         
+        
         try {
            setShowReportsError(false) 
            const res = await fetch(`/api/user/listings/${currentUser._id}`) 
+           
            const data = await res.json()
            if(Date.success === false){
             setShowReportsError(true)

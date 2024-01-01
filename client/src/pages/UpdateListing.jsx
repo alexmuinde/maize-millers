@@ -123,10 +123,10 @@ export default function CreateListing(){
                         
                     <div className="flex flex-col sm:flex-row gap-4">
                     <div className="bg-green-700 rounded-lg uppercase text-center   w-3/5 h-10">
-                    <button disabled={loading} className="p-2  text-white rounded-lg uppercase hover:opacity-80 disabled:opacity-90">{loading ? 'Creating...' : 'Update Record'}</button>
+                    <button disabled={loading} className="p-2  text-white rounded-lg uppercase hover:opacity-80 disabled:opacity-90">{loading ? 'Updating...' : 'Update Record'}</button>
                     </div>
                     <div className="bg-green-700 rounded-lg uppercase text-center h-10 w-2/5">
-                    <button disabled={loading} className="p-2  text-white rounded-lg uppercase hover:opacity-80 disabled:opacity-90">{loading ? 'Creating...' : 'Print'}</button>
+                    <button disabled={loading} className="p-2  text-white rounded-lg uppercase hover:opacity-80 disabled:opacity-90">{loading ? 'Printing...' : 'Print'}</button>
                     </div>
                     </div>
                     

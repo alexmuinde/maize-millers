@@ -72,10 +72,10 @@ export default function CreateReceipt(){
                     
                 </div>
                 <div className="flex flex-1 flex-col gap-4">
+                    <input type="text" placeholder="Amount" className="border p-3 rounded-lg" id="amount" required onChange={handleChange} value={formData.amount}/>
+                    <input type="text" placeholder="%VAT" className="border p-3 rounded-lg" id="vat" required onChange={handleChange} value={formData.vat}/>
                     <input type="text" placeholder="VAT Amout" className="border p-3 rounded-lg" id="vatAmount" required onChange={handleChange} value={formData.vatAmount}/>
                     <input type="text" placeholder="Total Amount" className="border p-3 rounded-lg" id="totalAmount" required onChange={handleChange} value={formData.totalAmount}/>
-                    <input type="text" placeholder="Amount" className="border p-3 rounded-lg" id="amount" required onChange={handleChange} value={formData.amount}/>
-                    <input type="text" placeholder="VAT" className="border p-3 rounded-lg" id="vat" required onChange={handleChange} value={formData.vat}/>
                     
                     
                     <div className="flex flex-col sm:flex-row gap-4">
