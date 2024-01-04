@@ -158,8 +158,7 @@ export default function CreateListing(){
             </div>
             <div className="flex flex-col gap-4 flex-1">
             <input type="text" placeholder="Maximum Limit" className="border p-3 rounded-lg" id="maximumLimit" required onChange={handleChange} value={formData.maximumLimit}/>
-                    <input type="text" placeholder="Remarks" className="border p-3 rounded-lg" id="remarks" required onChange={handleChange} value={formData.remarks}/>
-                    
+            <input type="text" placeholder="Remarks" className="border p-3 rounded-lg" id="remarks" required onChange={handleChange} value={formData.remarks}/> 
             <input type="text" placeholder="Reference Standard" className="border p-3 rounded-lg" id="referenceStandard" required onChange={handleChange} value={formData.referenceStandard}/>
                     <input type="text" placeholder="Batch Number" className="border p-3 rounded-lg" id="batchNo" required onChange={handleChange} value={formData.batchNo}/>
                     <p className='font-semibold'>Images: 
