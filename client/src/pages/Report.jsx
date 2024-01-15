@@ -13,7 +13,7 @@ export default function CreateListing(){
     const navigate = useNavigate()
     const [formData, setFormData] = useState({
         name: '', source: '', commodity: '', phoneNumber: '', sampleReferenceNumber: '', dateSampleReceived: '', dateSampleAnalyzed: '', 
-        methodOfTest: '', referenceStandard: '', parameter: '', results: '', maximumLimit: '', remarks: '', batchNo: '', userRef: '', imageUrls:[]
+        methodOfTest: '', samplingMethod: '', referenceStandard: '', parameter: '', results: '', maximumLimit: '', remarks: '', batchNo: '', userRef: '', imageUrls:[]
         
     })
     
@@ -151,6 +151,7 @@ export default function CreateListing(){
                     <input type="text" placeholder="Phone Number" className="border p-3 rounded-lg" id="phoneNumber" required onChange={handleChange} value={formData.phoneNumber}/>
                     <input type="text" placeholder="Sample Reference Number" className="border p-3 rounded-lg" id="sampleReferenceNumber" required onChange={handleChange} value={formData.sampleReferenceNumber}/>
                     <input type="text" placeholder="Method Of Test" className="border p-3 rounded-lg" id="methodOfTest" required onChange={handleChange} value={formData.methodOfTest }/>
+                    <input type="text" placeholder="Sampling Method" className="border p-3 rounded-lg" id="samplingMethod" required onChange={handleChange} value={formData.samplingMethod }/>
                     <input type="text" placeholder="Parameter" className="border p-3 rounded-lg" id="parameter" required onChange={handleChange} value={formData.parameter}/>
                     <input type="text" placeholder="Results" className="border p-3 rounded-lg" id="results" required onChange={handleChange} value={formData.results}/>
                     

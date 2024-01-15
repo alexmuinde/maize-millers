@@ -36,6 +36,10 @@ const reportSchema = new mongoose.Schema(
             type: String,
             required: true
         },
+        samplingMethod : {
+            type: String,
+            required: true
+        },
         referenceStandard : {
             type: String,
             required: true
